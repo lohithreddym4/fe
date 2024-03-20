@@ -1,0 +1,61 @@
+<app-nav></app-nav>
+<br>
+<div style="padding: 20px;" class="container shadow">
+    <div class="row">
+      <h1 class="h1 d-flex justify-content-start">Check if a website or app is down for everyone or just you.</h1>
+    <div class=" d-flex align-items-center">
+
+  <div class="container ">
+    <p style="font-size: large; line-height: 30px;" class="font-theme">Stay in the loop with our website status checker! Instantly know if your go-to app or website is online or experiencing disruptions. Don't miss a beat – our tool keeps you informed in real-time, ensuring uninterrupted browsing tailored to your needs. Experience hassle-free browsing with confidence.
+    </p>
+  </div>
+  <div class="search">
+    <div class="ng-autocomplete ">
+    <ng-autocomplete 
+    #searchword
+    [data]="retrievedWebsites"
+    [searchKeyword]="keyword"
+    placeholder="Enter app/website name"
+    (selected)='selectEvent($event, itemTemplate)'
+    [itemTemplate]="itemTemplate"
+    [focusFirst]="true"
+    (keyup.enter) ='onChangeSearch($event)'
+    >                              
+  </ng-autocomplete>
+
+  <ng-template  #itemTemplate let-item>
+  <a  [innerHTML]="item.name"></a> 
+  </ng-template>
+</div>
+&nbsp; &nbsp;
+<button (click)="searchRedirect(searchword.query)" class=" icons btn btn-dark d-flex align-items-center border-none">
+<i  class="fa-solid fa-magnifying-glass fa-md"></i>
+</button>
+</div>
+  </div>
+
+  </div>
+  </div>
+  <br>
+  <div style="padding: 10px;" class="container shadow">
+    <div class="row">
+      <div >
+        <app-disrupts></app-disrupts>
+      </div>
+      
+    </div>
+  </div>
+
+  <br>
+  <div class="container shadow">
+    <div class="row">
+    <h2 style="font-size: larger; font-weight: 500; ">Websites We monitor</h2>
+    <div *ngFor="let site of orderedWebsites" class="col-md-6">
+          <span style="font-size: large; color: #784cfa;">{{site.char}}</span>
+          <div *ngFor="let ss of site.values">
+            <a (click)="redirect(ss)"><span class="font-theme hover">{{site.char + ss.name.substring(1) }}</span></a>
+          </div>
+          <br>
+    </div>
+  </div>
+  

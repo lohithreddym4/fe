@@ -1,0 +1,68 @@
+<nav class="shd navbar navbar-expand-md navbar-light bg-light p-4">
+    <a class="navbar-brand px-2" (click)="navigate(urls)">Admin-Panel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto"> 
+        <li class="nav-item">
+          <a class="nav-link" #urls (click) = "navigate(urls)">
+            Add bulk Urls
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  #reports (click)="navigate(reports)">
+             Reports
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" #comment (click)="navigate(comment)">
+             Comments
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" #admin (click)="navigate(admin)">
+            Add admin
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" #options (click)="navigate(options)">
+            Update options
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" #descriptio (click)="navigate(descriptio)">
+            Description
+          </a>
+        </li>
+        <!-- Add more navbar items as needed -->
+      </ul>
+    </div>
+  </nav>
+  <br>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header form-control">
+                Add Description
+              </div>
+              <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label for="url">Url</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Enter url:" [(ngModel)]="url" required>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea placeholder="enter description..." class="form-control" name="description" id="description" [(ngModel)]="description" cols="30" rows="10"></textarea>
+                </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Add Description</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
